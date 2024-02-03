@@ -1,0 +1,19 @@
+{
+  "name": "astropedia",
+  "version": "1.0.0",
+  "description": "AstroPedia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirArnoldB/AstroPedia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirArnoldB/AstroPedia/issues"
+  },
+  "homepage": "https://github.com/SirArnoldB/AstroPedia#readme"
+}
