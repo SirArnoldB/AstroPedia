@@ -65,7 +65,7 @@ const DialogModal = ({ openDialog, handleCloseDialog, dialogData }) => {
           </CardContent>
           <CardActions>
             <PlanetChatModal name={name} />
-            <Button>Explore AR</Button>
+            <Button href="/planet-ar">Explore AR</Button>
           </CardActions>
         </Card>
       </Fade>
