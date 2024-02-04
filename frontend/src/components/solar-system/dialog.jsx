@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardActions,
   CardContent,
+  Link,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import PlanetChatModal from "./PlanetChatModal";
@@ -65,7 +66,9 @@ const DialogModal = ({ openDialog, handleCloseDialog, dialogData }) => {
           </CardContent>
           <CardActions>
             <PlanetChatModal name={name} />
-            <Button href="/planet-ar">Explore AR</Button>
+            <Link href="/planet-ar" underline="none">
+              <Button>Explore AR</Button>
+            </Link>
           </CardActions>
         </Card>
       </Fade>
