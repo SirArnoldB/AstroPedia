@@ -1,95 +1,88 @@
-// import React from "react";
+import {
+  Backdrop,
+  Modal,
+  Fade,
+  Button,
+  Typography,
+  Card,
+  CardHeader,
+  CardActions,
+  CardContent,
+} from "@mui/material";
+import PropTypes from "prop-types";
 
-// const  Dialog = ({ hideDialog, dialogData }) => {
-//   if (!dialogData) {
-//     return null;
-//   }
-//   const { name, gravity, orbitalPeriod, surfaceArea } = dialogData;
-//   return (
-//     <div className="dialog">
-//       <div className="dialog-header">
-//         <div className="">{name}</div>
-//         <svg
-//           onClick={hideDialog}
-//           width="24px"
-//           height="24px"
-//           viewBox="0 0 200 200"
-//           fill="none"
-//         >
-//           <circle cx="100" cy="100" r="84" stroke="#FFF" strokeWidth="18" />
-//           <path
-//             d="M142.89 72.1208L115.015 99.9994
-//                L142.89 127.877
-//                C147.037 132.025 147.037 138.744 142.89 142.892
-//                C140.819 144.963 138.102 146 135.388 146
-//                C132.668 146 129.952 144.965 127.882 142.892
-//                L100 115.011
-//                L72.1207 142.891
-//                C70.0493 144.963 67.3328 146 64.6156 146
-//                C61.8992 146 59.1846 144.965 57.1113 142.891
-//                C52.965 138.745 52.965 132.026 57.1113 127.876
-//                L84.986 99.9991
-//                L57.1098 72.1208
-//                C52.9634 67.9745 52.9634 61.2538 57.1098 57.1074
-//                C61.2553 52.9642 67.972 52.9642 72.1191 57.1074
-//                L99.9999 84.9859
-//                L127.878 57.1074
-//                C132.026 52.9642 138.744 52.9642 142.889 57.1074
-//                C147.037 61.2538 147.037 67.9745 142.89 72.1208Z"
-//             fill="#FFF"
-//           />
-//         </svg>
-//       </div>
-//       <div className="details">Gravity: {gravity} m/s²</div>
-//       <div className="details">Orbital period: {orbitalPeriod} days</div>
-//       <div className="details">Surface area: {surfaceArea} million km²</div>
-//     </div>
-//   );
-// }
-
-
-// export default Dialog;
-
-import React from "react";
-import AmbassadorView from "../../AmbassadorView";
-
-const Dialog = ({ hideDialog, dialogData }) => {
-  if (!dialogData) {
-    return null;
-  }
-  const { name, gravity, orbitalPeriod, surfaceArea } = dialogData;
-
-  const handleButtonClick = () => {
-    // This function does nothing for now.
-    // You can add your desired functionality here.
-  };
+const DialogModal = ({ openDialog, handleCloseDialog, dialogData }) => {
+  const { name, gravity, orbitalPeriod, surfaceArea } = dialogData || {};
 
   return (
-    <div className="dialog">
-      <div className="dialog-header">
-        <div>{name}</div>
-        <svg
-          onClick={hideDialog}
-          width="24px"
-          height="24px"
-          viewBox="0 0 200 200"
-          fill="none"
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={openDialog}
+      onClose={handleCloseDialog}
+      closeAfterTransition
+      slots={{ backdrop: Backdrop }}
+      slotProps={{
+        backdrop: {
+          timeout: 500,
+        },
+      }}
+    >
+      <Fade in={openDialog} easing={"ease-in-out"}>
+        <Card
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "transparent",
+            position: "absolute",
+            top: "20%",
+            left: "85%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            border: "0.1px solid #000",
+            boxShadow: 5,
+            zIndex: 10000,
+          }}
         >
-          {/* ... Your existing close button SVG code ... */}
-        </svg>
-      </div>
-      <div className="details">Gravity: {gravity} m/s²</div>
-      <div className="details">Orbital period: {orbitalPeriod} days</div>
-      <div className="details">Surface area: {surfaceArea} million km²</div>
-
-      {/* New button added below */}
-      <button onClick={handleButtonClick} className="custom-button">
-        Explore the planet
-      </button>
-
-       <AmbassadorView name={name}/>
-    </div>
+          <CardHeader
+            title={`Explore ${name}!`}
+            sx={{
+              color: "white",
+            }}
+          />
+          <CardContent
+            sx={{
+              color: "gray",
+              p: 2,
+            }}
+          >
+            <Typography variant="body2">Gravity: {gravity} m/s²</Typography>
+            <Typography variant="body2">
+              Orbital period: {orbitalPeriod} days
+            </Typography>
+            <Typography variant="body2">
+              Surface area: {surfaceArea} million km²
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button>Chat</Button>
+            <Button>Explore AR</Button>
+          </CardActions>
+        </Card>
+      </Fade>
+    </Modal>
   );
 };
 
-export default Dialog;
+DialogModal.propTypes = {
+  openDialog: PropTypes.bool.isRequired,
+  handleCloseDialog: PropTypes.func.isRequired,
+  dialogData: PropTypes.shape({
+    name: PropTypes.string,
+    gravity: PropTypes.string,
+    orbitalPeriod: PropTypes.string,
+    surfaceArea: PropTypes.string,
+  }),
+};
+
+export default DialogModal;
