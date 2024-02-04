@@ -10,21 +10,20 @@ import {
   CardContent,
 } from "@mui/material";
 import PropTypes from "prop-types";
+import PlanetChatModal from "./PlanetChatModal";
 
 const DialogModal = ({ openDialog, handleCloseDialog, dialogData }) => {
   const { name, gravity, orbitalPeriod, surfaceArea } = dialogData || {};
 
   return (
     <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
       open={openDialog}
       onClose={handleCloseDialog}
       closeAfterTransition
       slots={{ backdrop: Backdrop }}
       slotProps={{
         backdrop: {
-          timeout: 500,
+          timeout: 100,
         },
       }}
     >
@@ -65,7 +64,7 @@ const DialogModal = ({ openDialog, handleCloseDialog, dialogData }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button>Chat</Button>
+            <PlanetChatModal name={name} />
             <Button>Explore AR</Button>
           </CardActions>
         </Card>
