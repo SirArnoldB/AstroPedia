@@ -8,10 +8,10 @@ import {
   CardHeader,
   CardActions,
   CardContent,
-  Link,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import PlanetChatModal from "./PlanetChatModal";
+import { Link } from "react-router-dom";
 
 const DialogModal = ({ openDialog, handleCloseDialog, dialogData }) => {
   const { name, gravity, orbitalPeriod, surfaceArea } = dialogData || {};
@@ -66,7 +66,7 @@ const DialogModal = ({ openDialog, handleCloseDialog, dialogData }) => {
           </CardContent>
           <CardActions>
             <PlanetChatModal name={name} />
-            <Link href="/planet-ar" underline="none">
+            <Link to="/planet-ar" style={{ textDecoration: "none" }}>
               <Button>Explore AR</Button>
             </Link>
           </CardActions>
