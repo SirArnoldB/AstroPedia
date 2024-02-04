@@ -4,6 +4,8 @@ import earth from "/textures/2k_earth_daymap.jpeg";
 import mars from "/textures/2k_mars.jpeg";
 import jupiter from "/textures/2k_jupiter.jpeg";
 import saturn from "/textures/2k_saturn.jpeg";
+import uranus from "/textures/uranus.jpeg";
+import neptune from "/textures/2k_neptune.jpeg";
 
 const random = (a, b) => a + Math.random() * b;
 const randomInt = (a, b) => Math.floor(random(a, b));
@@ -11,11 +13,11 @@ const randomColor = () =>
   `rgb(${randomInt(80, 50)}, ${randomInt(80, 50)}, ${randomInt(80, 50)})`;
 
 const planetData = [];
-const totalPlanets = 6;
-const textures = [mercury, venus, earth, mars, jupiter, saturn];
+const totalPlanets = 8;
+const textures = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune];
 // const radiusSize = [0.2, 0.6, 0.63, 0.34, 6.9, 5.8];
-const radiusSize = [1.2, 1.6, 1.63, 1.34, 2.9, 2.6];
-const names = ["mercury", "venus", "earth", "mars", "jupiter", "saturn"];
+const radiusSize = [1.2, 1.6, 1.63, 1.34, 2.9, 2.8, 2.6, 1.8];
+const names = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
 
 for (let i = 0; i < totalPlanets; i++) {
   var planet = {
