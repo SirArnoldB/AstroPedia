@@ -21,6 +21,12 @@ const ChatModal = ({ open, handleClose, name }) => {
     VENUS: "https://www.chatbase.co/chatbot-iframe/d-1m-0X2TXJDO7gowHxUm",
     EARTH: "https://www.chatbase.co/chatbot-iframe/3n8ZyLfg63wLPUZjcEt8z",
     MARS: "https://www.chatbase.co/chatbot-iframe/W1NsfwsoMI4w_eu5KFWIT",
+    MERCURY: "https://www.chatbase.co/chatbot-iframe/6px_NKibfdid-w4wlnqD_", 
+    JUPITER: "https://www.chatbase.co/chatbot-iframe/6px_NKibfdid-w4wlnqD_",
+    SATURN: "https://www.chatbase.co/chatbot-iframe/6px_NKibfdid-w4wlnqD_",
+    URANUS: "https://www.chatbase.co/chatbot-iframe/6px_NKibfdid-w4wlnqD_",
+    NEPTUNE: "https://www.chatbase.co/chatbot-iframe/6px_NKibfdid-w4wlnqD_",
+
   };
 
   return (
@@ -36,8 +42,8 @@ const ChatModal = ({ open, handleClose, name }) => {
           display: "flex",
           flexDirection: "column",
           position: "absolute",
-          top: "80%",
-          left: "15%",
+          top: "50%",
+          left: "20%",
           transform: "translate(-50%, -50%)",
           width: 400,
           border: "0.1px solid #000",
