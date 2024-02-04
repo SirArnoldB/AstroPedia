@@ -1,25 +1,29 @@
-import React, { Suspense, useState } from "react";
+import { Suspense, useState, useRef } from "react";
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
-import Dialog from "./dialog";
+import DialogModal from "./dialog";
 import planetData from "./planetData";
 import "./SolarSystem.css";
 import sunTexture from "/textures/sun.jpeg";
-import {SphereGeometry, MeshPhongMaterial} from 'three'
+import { SphereGeometry, MeshPhongMaterial } from "three";
+import PropTypes from "prop-types";
 
-extend({SphereGeometry, MeshPhongMaterial })
+extend({ SphereGeometry, MeshPhongMaterial });
 
 const SolarSystem = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const handleCloseDialog = () => setOpenDialog(false);
+
   const [dialogData, setDialogData] = useState(null);
 
-  const hideDialog = () => {
-    setDialogData(null);
-  };
-  
   return (
     <>
-      <Dialog hideDialog={hideDialog} dialogData={dialogData} />
+      <DialogModal
+        openDialog={openDialog}
+        handleCloseDialog={handleCloseDialog}
+        dialogData={dialogData}
+      />
       <Canvas camera={{ position: [0, 50, 45], fov: 45 }}>
         <Suspense fallback={null}>
           <Lights />
@@ -29,6 +33,7 @@ const SolarSystem = () => {
               planet={planet}
               key={planet.id}
               setDialogData={setDialogData}
+              setOpenDialog={setOpenDialog}
             />
           ))}
           <OrbitControls />
@@ -36,7 +41,7 @@ const SolarSystem = () => {
       </Canvas>
     </>
   );
-}
+};
 
 function Lights() {
   return (
@@ -70,11 +75,12 @@ function Planet({
     name,
     gravity,
     orbitalPeriod,
-    surfaceArea
+    surfaceArea,
   },
-  setDialogData
+  setDialogData,
+  setOpenDialog,
 }) {
-  const planetRef = React.useRef();
+  const planetRef = useRef();
   const texture = useLoader(THREE.TextureLoader, textureMap);
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * speed + offset;
@@ -90,6 +96,7 @@ function Planet({
         ref={planetRef}
         onClick={() => {
           setDialogData({ name, gravity, orbitalPeriod, surfaceArea });
+          setOpenDialog(true);
         }}
       >
         <sphereGeometry args={[size, 32, 32]} />
@@ -102,6 +109,25 @@ function Planet({
     </>
   );
 }
+
+Planet.propTypes = {
+  planet: PropTypes.shape({
+    color: PropTypes.string,
+    xRadius: PropTypes.number,
+    zRadius: PropTypes.number,
+    size: PropTypes.number,
+    speed: PropTypes.number,
+    offset: PropTypes.number,
+    rotationSpeed: PropTypes.number,
+    textureMap: PropTypes.string,
+    name: PropTypes.string,
+    gravity: PropTypes.string,
+    orbitalPeriod: PropTypes.number,
+    surfaceArea: PropTypes.string,
+  }),
+  setDialogData: PropTypes.func,
+  setOpenDialog: PropTypes.func,
+};
 
 function Ecliptic({ xRadius = 1, zRadius = 1 }) {
   const points = [];
@@ -120,4 +146,9 @@ function Ecliptic({ xRadius = 1, zRadius = 1 }) {
   );
 }
 
-export default SolarSystem
+Ecliptic.propTypes = {
+  xRadius: PropTypes.number,
+  zRadius: PropTypes.number,
+};
+
+export default SolarSystem;
