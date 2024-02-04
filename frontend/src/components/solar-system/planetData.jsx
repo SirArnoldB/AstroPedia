@@ -14,10 +14,27 @@ const randomColor = () =>
 
 const planetData = [];
 const totalPlanets = 8;
-const textures = [mercury, venus, earth, mars, jupiter, saturn, uranus, neptune];
-// const radiusSize = [0.2, 0.6, 0.63, 0.34, 6.9, 5.8];
+const textures = [
+  mercury,
+  venus,
+  earth,
+  mars,
+  jupiter,
+  saturn,
+  uranus,
+  neptune,
+];
 const radiusSize = [1.2, 1.6, 1.63, 1.34, 2.9, 2.8, 2.6, 1.8];
-const names = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"];
+const names = [
+  "mercury",
+  "venus",
+  "earth",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+];
 
 for (let i = 0; i < totalPlanets; i++) {
   var planet = {
@@ -33,7 +50,7 @@ for (let i = 0; i < totalPlanets; i++) {
     name: names[i].toUpperCase(),
     gravity: random(2, 5).toFixed(2),
     orbitalPeriod: randomInt(50, 500),
-    surfaceArea: random(100, 1000).toFixed(2)
+    surfaceArea: random(100, 1000).toFixed(2),
   };
   planetData.push(planet);
 }
