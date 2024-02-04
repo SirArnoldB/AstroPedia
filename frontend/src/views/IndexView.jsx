@@ -1,4 +1,5 @@
 import { Container, Typography } from "@mui/material";
+import SolarSystem from "../components/solar-system/SolarSystem";
 
 const IndexView = () => {
   return (
@@ -8,6 +9,8 @@ const IndexView = () => {
           Hi 👋. Welcome back!
         </Typography>
       </Container>
+
+      <SolarSystem />
     </>
   );
 };
