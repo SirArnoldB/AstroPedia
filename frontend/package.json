@@ -37,5 +37,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.0.8"
-  }
+  },
+  "description": "This is the frontend for the AstroPedia application. Tech stack includes [React](https://react.dev/), and [Material UI](https://material-ui.com/).",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC"
 }
