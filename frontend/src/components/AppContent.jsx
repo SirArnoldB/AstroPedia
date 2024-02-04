@@ -6,6 +6,7 @@ import LoadingSpinner from "./LoadingSpinner";
 export const IndexPage = lazy(() => import("../pages/IndexPage"));
 export const ProfilePage = lazy(() => import("../pages/ProfilePage"));
 export const SettingsPage = lazy(() => import("../pages/SettingsPage"));
+export const PlanetArPage = lazy(() => import("../pages/PlanetArPage"));
 
 const AppContent = () => {
   const routes = useRoutes([
@@ -30,6 +31,10 @@ const AppContent = () => {
         {
           path: "/settings",
           element: <SettingsPage />,
+        },
+        {
+          path: "/planet-ar",
+          element: <PlanetArPage />,
         },
       ],
     },

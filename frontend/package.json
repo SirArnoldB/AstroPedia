@@ -24,7 +24,9 @@
     "react-scripts": "^3.0.1",
     "react-three-fiber": "^6.0.13",
     "simplebar-react": "^3.2.4",
-    "three": "^0.161.0"
+    "three": "^0.161.0",
+    "uuid-by-string": "^4.0.0",
+    "wouter": "^2.12.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
